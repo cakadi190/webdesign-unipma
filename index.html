@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kawal COVID-19</title>
+    <link rel="stylesheet" href="./css/app.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" />
+    <style>
+        body {
+        background: rgb(235, 235, 235);
+        font-size: 1rem;
+        }
+        #masthead {
+        min-height: 100vh;
+        background: linear-gradient(135deg, var(--primary), var(--dark));
+        position: relative;
+        }
+        #masthead #top-navbar {
+        border-bottom: 1px solid rgba(255,255,255,.25);
+        }
+        #masthead #top-navbar ul li a.nav-link {
+        color: rgba(255,255,255,.75);
+        }
+        #masthead #top-navbar ul li a.nav-link.disabled,
+        #masthead #top-navbar ul li a.nav-link:disabled {
+        opacity: .5;
+        cursor: not-allowed!important;
+        }
+        #masthead .row {
+        min-height: calc(100vh - 110px);
+        }
+        #masthead .title {
+        font-size: 4rem;
+        color: white;
+        }
+        #masthead .desc {
+        font-size: 1.5rem;
+        color: white;
+        }
+        @media screen and (max-width: 768px) {
+        #masthead .title {
+        font-size: 3rem;
+        }
+        #masthead .desc {
+        font-size: 1.25rem;
+        }
+        }
+        #masthead .btn-cta {
+        display: inline-flex;
+        padding: 0.75rem 1rem .75rem 2rem;
+        font-size: 1rem;
+        border-radius: 50px;
+        color: white;
+        border: 3px solid #fff;
+        align-items: center;
+        }
+        #masthead .btn-cta:hover {
+        background: #fff;
+        color: var(--primary);
+        }
+        #masthead .btn-cta:focus {
+        box-shadow: 0 0 0 0.2rem rgb(255,255,255,.25);
+        }
+        #masthead .btn-cta .icon {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 1.5rem;
+        background: white;
+        color: var(--primary);
+        border-radius: 50px;
+        }
+        #masthead .btn-cta:hover .icon {
+        background: var(--primary);
+        color: #fff;
+        }
+        #masthead .custom-shape-divider-bottom svg {
+        transform: rotate(180deg);
+        fill: #fff;
+        position: absolute;
+        bottom: 0;
+        height: 70px;
+        width: 100%;
+        }
+        section .heading {
+        font-size: 2.5rem;
+        }
+        section .desc {
+        font-size: 1.2rem;
+        }
+        #preventive-act .custom-shape-divider-top svg {
+        fill: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header id="masthead">
+        <!-- Top Navbar -->
+        <nav class="navbar navbar-expand navbar-dark" id="top-navbar">
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="//wa.me/6285159190229"><i class="fas fa-phone fa-fw mr-2"></i><span class="d-none d-md-inline d-sm-none">085159190229</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mailto:admin@dasakreativa.web.id"><i class="fas fa-envelope fa-fw mr-2"></i><span class="d-none d-md-inline d-sm-none">admin@dasakreativa.web.id</span></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="./kawal.html" class="btn btn-success">All Cases</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Bottom Nav -->
+        <nav class="navbar navbar-expand-lg navbar-dark" id="bottom-nav">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html"><img src="./img/brands/logo-white-alt.svg" height="30px" width="auto" alt="Logo Dasa Kreativa" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#cases">Kasus</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#preventive-act">Langkah Pencegahan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#rumah-sakit">Daftar RS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7 py-5 py-md-0 my-5 my-md-0">
+                    <h2 class="title">Ayo Lawan Corona!</h2>
+                    <p class="desc">Dukung gerakan lawan corona agar Indonesia Sehat kembali seperti sediakala dan tidak menjadi pandemi berkepanjangan!</p>
+                    <a href="#preventive-act" class="btn btn-cta js-scroll-trigger">
+                        Info Lebih Lanjut
+                        <div class="icon"><i class="fas fa-chevron-right"></i></div>
+                    </a>
+                </div>
+                <div class="col-md-5 align-self-end">
+                    <img src="./img/ilustrasi/ilustrasi-1.svg" class="w-100" />
+                </div>
+            </div>
+        </div>
+        <!-- Separator -->
+        <div class="custom-shape-divider-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </header>
+    <section class="bg-white py-5" id="cases">
+        <div class="container py-5">
+            <h3 class="text-center heading">Kasus Covid-19</h3>
+            <p class="text-muted text-center desc">Yang ada di Indonesia</p>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="alert alert-alt-danger" role="alert">
+                        <div class="alert-wrap">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <div class="content">
+                                <h3 class="title">Kasus</h3>
+                                <div id="all-cases">Kasus</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="alert alert-alt-success" role="alert">
+                        <div class="alert-wrap">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="content">
+                                <h3 class="title">Sembuh</h3>
+                                <div id="sembuh">Orang</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="alert alert-alt-warning" role="alert">
+                        <div class="alert-wrap">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-briefcase-medical"></i>
+                            </div>
+                            <div class="content">
+                                <h3 class="title">Dirawat</h3>
+                                <div id="dirawat">Orang</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="alert alert-alt-danger" role="alert">
+                        <div class="alert-wrap">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-book-dead"></i>
+                            </div>
+                            <div class="content">
+                                <h3 class="title">Meninggal</h3>
+                                <div id="death">Orang</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center">API <a class="text-muted font-weight-bold" href="https://www.kawalcorona.com">Kawal Corona</a> by <a class="text-muted font-weight-bold" href="https://hack.co.id">Ethical Hacker Indonesia</a>.</p>
+        </div>
+    </section>
+    <section id="preventive-act">
+        <!-- Separator -->
+        <div class="custom-shape-divider-top">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="container py-5 my-5">
+            <h3 class="heading text-center">Bagaimana Caranya?</h3>
+            <p class="text-muted text-center desc">Mengatasi dan Terhindar dari COVID-19?</p>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <img src="./img/ilustrasi/ilustrasi-2.svg" class="w-100" />
+                </div>
+                <div class="col-md-8">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Jauhi Kerumunan
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Yuk jauhi kerumunan! Siapa tau diantara orang-orang terdekat anda ada yang sedang terjangkit atau membawa virus ini.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Kurangi Mobilitas
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Apabila tidak ada keperluan di luar ruangan dan keperluannya bersifat mendadak, yuk kurangi mobilitas di luar ruangan... 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Cuci Tangan Menggunakan Sabun dan Air Mengalir atau Menggunakan Alkohol Apabila Darurat
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Nah yang satu ini jangan sampai lupa ya? Setiap dan sedia alkohol dimanapun berada apabila ada air dan sabun bisa mencuci tangan dengan air dan sabun ya?
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Gunakan Masker Yang Benar!
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Nah yang satu ini juga jangan sampai kelupaan ya? Gunakan masker dimanapun dan kapanpun anda berada. Yang dimaksud masker disini bukan masker wajah ya? Yakni masker penutup hidung dan mulut!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFive">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Jaga Jarak Minimal 100m ya?
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Yuk jaga jarak aman antara kamu dengan yang lain! Supaya gak terjadi kontak erat antara kamu dan penderita!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rumah-sakit" class="bg-white">
+        <div class="custom-shape-divider-top">
+            <svg data-name="Layer 1" fill="#ebebeb" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <div class="py-5 container">
+            <h3 class="title m-0 text-center">Rumah Sakit</h3>
+            <p class="text-muted text-center desc">Daftar Rumah Sakit Rujukan yang Ada Di Indonesia</p>
+
+            <table class="table mt-5 table-sm table-bordered table-hover mb-0" id="rs-rujukan">
+            <thead>
+            <tr>
+            <th data-priority="1">Nama Rumah Sakit</th>
+            <th data-priority="2">Provinsi</th>
+            <th>Telepon</th>
+            <th>Fax</th>
+            <th>Alamat</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>RSU Raden Mattaher Jambi</td>
+            <td>Jambi</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6274161692">0741-61692</a></span></td>
+
+            <td></td>
+            <td>Jl. Letjen. Soeprapto No. 31, Telanaipura, Jambi</td>
+            </tr>
+            <tr>
+            <td>RSU dr. Djasamen Saragih Pematang Siantar</td>
+            <td>Sumatera Utara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6262223824">0622-23824</a></span></td>
+
+            <td></td>
+            <td>Jl. Sutomo No.230, Simalungun, Kec. Siantar Selatan, Kota Pematang Siantar, Sumatera Utara 21121</td>
+            </tr>
+            <tr>
+            <td>RSUD Kayu Agung</td>
+            <td>Sumatera Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62712323889">0712-323889</a></span></td>
+
+            <td></td>
+            <td>Jl. Lintas Timur Lampung - Palembang, Jua Jua, Kec. Kayu Agung, Kab. Ogan Komering Ilir, Sumatera Selatan 30867</td>
+            </tr>
+            <tr>
+            <td>RSUP H. Adam Malik</td>
+            <td>Sumatera Utara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62618364581">061-836-4581</a></span></td>
+
+            <td>061 836 0255</td>
+            <td>Jl. Bunga Lau No. 17, Kemenangan Tani, Kec. Medan Tuntungan, Kota Medan, Sumatera Utara 20136</td>
+            </tr>
+            <tr>
+            <td>RSUP dr. Mohammad Hoesin Palembang</td>
+            <td>Sumatera Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62711354088">0711-354088</a></span></td>
+
+            <td></td>
+            <td>Jl. Jend. Sudirman KM. 3,5, Sekip Jaya, Kec. Kemuning, Kota Palembang, Sumatera Selatan 30126</td>
+            </tr>
+            <tr>
+            <td>RSUD Kabupaten Lahat</td>
+            <td>Sumatera Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62731321785">0731-321785</a></span></td>
+
+            <td></td>
+            <td>Jl. Mayor Ruslan I No.29, Ps. Baru, Kec. Lahat, Kab. Lahat, Sumatera Selatan 31461</td>
+            </tr>
+            <tr>
+            <td>RSU dr. Sobirin Musirawas</td>
+            <td>Sumatera Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62733321013">0733-321013</a></span></td>
+
+            <td></td>
+            <td>Jl. Yos Sudarso No.13, Kabupaten Musirawas, Ps. Permiri, Lubuk Linggau Barat II, Kota Lubuklinggau, Sumatera Selatan 31613</td>
+            </tr>
+            <tr>
+            <td>RSUD Siti Fatimah</td>
+            <td>Sumatera Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+627115718883">0711-5718883</a></span></td>
+
+            <td></td>
+            <td>Jl. Kol. H. Burlian KM. 6, Suka Bangun, Kec. Sukarami, Kota Palembang, Sumatera Selatan 30151</td>
+            </tr>
+            <tr>
+            <td>RSUP Dr. M. Jamil Padang</td>
+            <td>Sumatera Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6275137030">0751-37030</a></span><br><span style="white-space: nowrap"><a href="tel:+6275137031">0751-37031</a></span><br><span style="white-space: nowrap"><a href="tel:+6275132373">0751-32373</a></span></td>
+
+            <td>0751 32371</td>
+            <td>Jl. Perintis Kemerdekaan, Sawahan Timur, Kec. Padang Timur, Kota Padang, Sumatera Barat 25171</td>
+            </tr>
+            <tr>
+            <td>RSUD Dumai</td>
+            <td>Riau</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6276538367">0765-38367</a></span><br><span style="white-space: nowrap"><a href="tel:+62765440992">0765-440992</a></span></td>
+
+            <td></td>
+            <td>Jl. Tj. Jati No. 4, Buluh Kasap, Dumai Timur, Kota Dumai, Riau 28812</td>
+            </tr>
+            <tr>
+            <td>RSUD Arifin Achmad</td>
+            <td>Riau</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6276121618">0761-21618</a></span><br><span style="white-space: nowrap"><a href="tel:+6276121657">0761-21657</a></span><br><span style="white-space: nowrap"><a href="tel:+62761855702">0761-855702</a></span><br><span style="white-space: nowrap"><a href="tel:+6276123418">0761-23418</a></span></td>
+
+            <td></td>
+            <td>Jl. Diponegoro No. 2, Sumahilang, Kec. Pekanbaru Kota, Kota Pekanbaru, Riau 28156</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Loekmono Hadi Kudus</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62291444001">0291-444001</a></span><br><span style="white-space: nowrap"><a href="tel:+62291431831">0291-431831</a></span></td>
+
+            <td></td>
+            <td>Jl. dr. Lukmonohadi No. 19, Cobowo, Ploso, Kec. Jati, Kab. Kudus, Jawa Tengah 59348</td>
+            </tr>
+            <tr>
+            <td>RSUD Kota Tanjungpinang</td>
+            <td>Kepulauan Riau</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62771313000">0771-313000</a></span></td>
+
+            <td></td>
+            <td>Jl. Sudirman No. 795, Tanjungpinang Barat, Kota Tanjung Pinang, Kepulauan Riau 29125</td>
+            </tr>
+            <tr>
+            <td>RSUD Puri Husada Tembilahan</td>
+            <td>Riau</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6276822118">0768-22118</a></span></td>
+
+            <td></td>
+            <td>Jl. Veteran No.52, Tembilahan Hilir, Tembilahan, Kab. Indragiri Hilir, Riau 29281</td>
+            </tr>
+            <tr>
+            <td>RSUD Jend. A. Yani</td>
+            <td>Lampung</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6272541820">0725-41820</a></span></td>
+
+            <td></td>
+            <td>Jl. Ahmad Yani No.13, Imopuro, Kec. Metro Pusat, Kota Metro, Lampung 34124</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. H. Abdul Moeloek</td>
+            <td>Lampung</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62721703312">0721-703312</a></span></td>
+
+            <td></td>
+            <td>Jl. Dr. Rivai No. 6, Penengahan, Kec. Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35112</td>
+            </tr>
+            <tr>
+            <td>RSUD Embung Fatimah</td>
+            <td>Kepulauan Riau</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62778364446">0778-364446</a></span></td>
+
+            <td></td>
+            <td>Jl. Letjend. Suprapto No. 1-9, Bukit Tempayan, Kec. Batu Aji, Kota Batam, Kepulauan Riau 29425</td>
+            </tr>
+            <tr>
+            <td>RSUP Persahabatan</td>
+            <td>DKI Jakarta</td>
+            <td><span style="white-space: nowrap">IGD <a href="tel:+622122472222p1">021-22472222 ext 1</a></span><br><span style="white-space: nowrap"><a href="tel:+62214891708">021-4891708</a></span></td>
+
+            <td>021 4711222, 021 4890778</td>
+            <td>Jl. Persahabatan Raya No. 1, Pisangan Timur, Kec. Pulo Gadung, Kota Jakarta Timur, DKI Jakarta</td>
+            </tr>
+            <tr>
+            <td>RSUD Raja Ahmad Tabib</td>
+            <td>Kepulauan Riau</td>
+            <td><span style="white-space: nowrap">IGD <a href="tel:+627717335201">0771-7335201</a></span><br><span style="white-space: nowrap">Informasi <a href="tel:+627717335202">0771-7335202</a></span></td>
+
+            <td>0771 7335203</td>
+            <td>Jl. Daeng Celak KM. 8 No. 100, Air Raja, Kec. Tanjungpinang Timur, Kota Tanjung Pinang, Kepulauan Riau 29125</td>
+            </tr>
+            <tr>
+            <td>RSUD Tarakan Jakarta</td>
+            <td>DKI Jakarta</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6281211992017">0812-1199-2017</a></span><br><span style="white-space: nowrap"><a href="tel:+62213503003p1148">021-3503003 ext 1148</a></span></td>
+
+            <td></td>
+            <td>Jl. Kyai Caringin No. 7, Cideng, Kecamatan Gambir, Kota Jakarta Pusat, DKI Jakarta</td>
+            </tr>
+            <tr>
+            <td>RSUD Banyumas</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62281796182">0281-796182</a></span><br><span style="white-space: nowrap"><a href="tel:+62281796031">0281-796031</a></span></td>
+
+            <td>0281 796182</td>
+            <td>Jl. Rumah Sakit No. 1, Karangpucung, Kejawar, Kec. Banyumas, Kab. Banyumas, Jawa Tengah</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Moewardi</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62271634634">0271-634634</a></span></td>
+
+            <td>0271 637412</td>
+            <td>Jl. Kolonel Sutarto No. 132, Jebres, Kec. Jebres, Kota Surakarta, Jawa Tengah</td>
+            </tr>
+            <tr>
+            <td>RSUP Dr. Kariadi</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62248413993">024-8413993</a></span><br><span style="white-space: nowrap"><a href="tel:+62248413476">024-8413476</a></span></td>
+
+            <td></td>
+            <td>Jl. Dr. Sutomo No. 16, Randusari, Kec. Semarang Selatan, Kota Semarang, Jawa Tengah</td>
+            </tr>
+            <tr>
+            <td>RSU Dr. H. Soewondo Kendal</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62294381433">0294-381433</a></span></td>
+
+            <td></td>
+            <td>Jl. Laut No. 21, Ngilir, Kec. Kendal, Kab. Kendal, Jawa Tengah</td>
+            </tr>
+            <tr>
+            <td>RSUP Fatmawati</td>
+            <td>DKI Jakarta</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62217501524">021-7501524</a></span></td>
+
+            <td></td>
+            <td>Jl. RS. Fatmawati Raya, Cilandak Barat, Kec. Cilandak, Kota Jakarta Selatan, DKI Jakarta</td>
+            </tr>
+            <tr>
+            <td>RSUD Pasar Rebo</td>
+            <td>DKI Jakarta</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62218401127">021-8401127</a></span></td>
+
+            <td></td>
+            <td>Jl. T. B. Simatupang No. 30, Gedong, Kec. Ps. Rebo, Kota Jakarta Timur, DKI Jakarta</td>
+            </tr>
+            <tr>
+            <td>RS Tk. II Dustira</td>
+            <td>Jawa Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62226652207">022-665-2207</a></span><br><span style="white-space: nowrap"><a href="tel:+62226633967">022-663-3967</a></span><br><span style="white-space: nowrap"><a href="tel:+62226630932">022-663-0932</a></span></td>
+
+            <td></td>
+            <td>Jl. dr. Dustira No.1 Kel. Baros Kec. Cimahi Tengah, Kota Cimahi, Jawa Barat</td>
+            </tr>
+            <tr>
+            <td>RSUD Sekarwangi Sukabumi</td>
+            <td>Jawa Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62266531261">0266-531261</a></span><br><span style="white-space: nowrap"><a href="tel:+62266533376">0266-533376</a></span></td>
+
+            <td></td>
+            <td>Jl. Siliwangi No. 49, Cibadak, Kec. Cibadak, Kab. Sukabumi, Jawa Barat</td>
+            </tr>
+            <tr>
+            <td>RSUD Subang</td>
+            <td>Jawa Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62260411421">0260-411421</a></span></td>
+
+            <td></td>
+            <td>Jl. Brigjen. Katamso No. 37, Dangdeur, Kec. Subang, Kab. Subang, Jawa Barat</td>
+            </tr>
+            <tr>
+            <td>RSUD Indramayu</td>
+            <td>Jawa Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62234272655">0234-272655</a></span></td>
+
+            <td>0234 275330</td>
+            <td>Jl. Murah Nara No. 7, Sindang, Kab. Indramayu, Jawa Barat</td>
+            </tr>
+            <tr>
+            <td>RS Paru Dr. H. A. Rotinsulu</td>
+            <td>Jawa Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6222231427">022-231427</a></span><br><span style="white-space: nowrap"><a href="tel:+62222034446">022-2034446</a></span><br><span style="white-space: nowrap"><a href="tel:+6281321348001">0813-2134-8001</a></span><br><span style="white-space: nowrap">SMS <a href="sms:+628112294595">0811-229-4595</a></span></td>
+
+            <td></td>
+            <td>Jl. Bukit Jarian No. 40 Ciumbuleuit, Kota Bandung, Jawa Barat</td>
+            </tr>
+            <tr>
+            <td>RSUD Dr. Slamet Garut</td>
+            <td>Jawa Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62262232720">0262-232720</a></span></td>
+
+            <td></td>
+            <td>Jl. RSU Dr. Slamet No.12, Sukakarya, Kec. Tarogong Kidul, Kab. Garut, Jawa Barat</td>
+            </tr>
+            <tr>
+            <td>RSD Gunung Jati</td>
+            <td>Jawa Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62231206330">0231-206330</a></span></td>
+
+            <td></td>
+            <td>JL. Kesambi No. 56, Kesambi, Kec. Kesambi, Kota Cirebon, Jawa Barat</td>
+            </tr>
+            <tr>
+            <td>RSPAD Gatot Soebroto</td>
+            <td>DKI Jakarta</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6221371008">021-371008</a></span><br><span style="white-space: nowrap"><a href="tel:+62213441008p384">021-3441008 ext 384</a></span><br><span style="white-space: nowrap"><a href="tel:+62213840702">021-3840702</a></span></td>
+
+            <td></td>
+            <td>Jl. Abdul Rahman Saleh Raya No. 24, Senen, Kec. Senen, Kota Jakarta Pusat, DKI Jakarta</td>
+            </tr>
+            <tr>
+            <td>RSPI Prof. Dr. Sulianti Saroso</td>
+            <td>DKI Jakarta</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62216506559">021-6506559</a></span></td>
+
+            <td>021 6401411</td>
+            <td>Jl. Baru Sunter Permai Raya, Papanggo, Tj. Priok, Kota Jakarta Utara, DKI Jakarta</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. M. Yunus Bengkulu</td>
+            <td>Bengkulu</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6273652004">0736-52004</a></span><br><span style="white-space: nowrap"><a href="tel:+6273652008">0736-52008</a></span></td>
+
+            <td></td>
+            <td>Jl. Bhayangkara, Sidomulyo, Kec. Gading Cempaka, Kota Bengkulu, Bengkulu</td>
+            </tr>
+            <tr>
+            <td>RSUD Arga Makmur</td>
+            <td>Bengkulu</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62737521118">0737-521118</a></span></td>
+
+            <td></td>
+            <td>Jl. Siti Khodijah No. 8, Kali, Arma Jaya, Kab. Bengkulu Utara, Bengkulu</td>
+            </tr>
+            <tr>
+            <td>RSU Kabupaten Tangerang</td>
+            <td>Banten</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62215523507">021-5523507</a></span></td>
+
+            <td>021 5527104</td>
+            <td>Jl. Ahmad Yani No. 9, Sukaasih, Kec. Tangerang, Kota Tangerang, Banten</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Drajat Prawiranegara Serang</td>
+            <td>Banten</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62254208833">0254-208833</a></span></td>
+
+            <td></td>
+            <td>Jl. Rumah Sakit No. 1, Kotabaru, Kec. Serang, Kota Serang, Banten</td>
+            </tr>
+            <tr>
+            <td>RSUD Pangkalpinang</td>
+            <td>Bangka Belitung</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62717422693">0717-422693</a></span></td>
+
+            <td></td>
+            <td>Jl. Soekarno Hatta, Kota Pangkalpinang, Bangka Belitung</td>
+            </tr>
+            <tr>
+            <td>RSUD Cut Meutia Lhokseumawe</td>
+            <td>Aceh</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6264546334">0645-46334</a></span><br><span style="white-space: nowrap"><a href="tel:+6264543012">0645-43012</a></span></td>
+
+            <td>0645 43012</td>
+            <td>Jl. Medan Banda Aceh, Bulat Rata, Blang Mangat, Kota Lhokseumawe, Aceh</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Zainoel Abidin</td>
+            <td>Aceh</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6265134565">0651-34565</a></span><br><span style="white-space: nowrap"><a href="tel:+6265122077">0651-22077</a></span><br><span style="white-space: nowrap"><a href="tel:+6265128148">0651-28148</a></span></td>
+
+            <td></td>
+            <td>Jl. Teuku Moh. Daud Beureueh No. 108, Bandar Baru, Kec. Kuta Alam, Kota Banda Aceh, Aceh</td>
+            </tr>
+            <tr>
+            <td>RSUD Dr. Sam Ratulangi Tondano</td>
+            <td>Sulawesi Utara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62431321171">0431-321171</a></span></td>
+
+            <td></td>
+            <td>Jl. Suprapto No.123, Luaan, Tondano Timur, Kab. Minahasa, Sulawesi Utara</td>
+            </tr>
+            <tr>
+            <td>RSUD Kota Kotamobagu</td>
+            <td>Sulawesi Utara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62435822816">0435-822816</a></span></td>
+
+            <td>0435 822354</td>
+            <td>Pobundayan, Kotamobagu Selatan, Kota Kotamobagu, Sulawesi Utara</td>
+            </tr>
+            <tr>
+            <td>RSUP Ratatotok Buyat</td>
+            <td>Sulawesi Utara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6282188789000">082188789000</a></span><br><span style="white-space: nowrap">Pelayanan <a href="tel:+628114333000">08114333000</a></span></td>
+
+            <td>0431-123123</td>
+            <td>Jl. Ratahan - Kotamobagu, Ratatotok, Kab. Minahasa Tenggara, Sulawesi Utara 95997</td>
+            </tr>
+            <tr>
+            <td>RSUD Undata Palu</td>
+            <td>Sulawesi Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+624514908020">0451-490-8020</a></span></td>
+
+            <td></td>
+            <td>Jl. Trans Sulawesi Tondo, Talise, Mantikulore, Kota Palu, Sulawesi Tengah 94119</td>
+            </tr>
+            <tr>
+            <td>RSUD Luwuk Banggai</td>
+            <td>Sulawesi Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6246121820">0461-21820</a></span></td>
+
+            <td></td>
+            <td>Jl. Imam Bonjol No.14, Bungin Timur, Luwuk, Kab. Banggai, Sulawesi Tengah 94711</td>
+            </tr>
+            <tr>
+            <td>RSUD Kolonodale</td>
+            <td>Sulawesi Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6246521010">0465-21010</a></span></td>
+
+            <td></td>
+            <td>Jl. W. Monginsidi No.2, Kolonodale, Petasia, Kab. Morowali, Sulawesi Tengah 94971</td>
+            </tr>
+            <tr>
+            <td>RSUD Provinsi Sulawesi Barat</td>
+            <td>Sulawesi Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+624262703259">0426-2703259</a></span><br><span style="white-space: nowrap"><a href="tel:+622703260">2703260</a></span></td>
+
+            <td></td>
+            <td>Jl. R. E. Martadinata, Simboro, Kec. Simboro Dan Kepulauan, Kabupaten Mamuju, Sulawesi Barat 91512</td>
+            </tr>
+            <tr>
+            <td>RSUD Prof. Dr. W. Z. Johannes Kupang</td>
+            <td>Nusa Tenggara Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62380832892">0380-832892</a></span><br><span style="white-space: nowrap"><a href="tel:+62380833614">0380-833614</a></span></td>
+
+            <td></td>
+            <td>Jl. Dr. Moch. Hatta No. 19, Kuanino, Kec. Kota Raja, Kota Kupang, Nusa Tenggara Timur 85111</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. T.C. Hillers Maumere</td>
+            <td>Nusa Tenggara Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6281261153944">0812-6115-3944</a></span><br><span style="white-space: nowrap"><a href="tel:+6238221617">0382-21617</a></span></td>
+
+            <td></td>
+            <td>Jl. Wairklau No. 1, Kota Uneng, Alok, Kab. Sikka, Nusa Tenggara Timur 86113</td>
+            </tr>
+            <tr>
+            <td>RSUD Provinsi NTB</td>
+            <td>Nusa Tenggara Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+623707502424">0370-7502424</a></span><br><span style="white-space: nowrap"><a href="tel:+623707504288">0370-7504288</a></span><br><span style="white-space: nowrap"><a href="tel:+6287878283848">0878-78283848</a></span></td>
+
+            <td></td>
+            <td>Jl. Prabu Rangkasari, Dasan Cermen, Kec. Sandubaya, Kota Mataram, Nusa Tenggara Barat 84371</td>
+            </tr>
+            <tr>
+            <td>RSUD Kota Mataram</td>
+            <td>Nusa Tenggara Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62370640774">0370-640774</a></span></td>
+
+            <td>0370 646928</td>
+            <td>Jl. Bung Karno No. 3, Pagutan, Kota Mataram, Nusa Tenggara Barat 83134</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. H. Soemarno Sosroatmodjo Tanjung Selor</td>
+            <td>Kalimantan Utara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6255221292">0552-21292</a></span><br><span style="white-space: nowrap"><a href="tel:+6255221118">0552-21118</a></span></td>
+
+             <td>0552 22667</td>
+            <td>Jl. Cendrawasih, Tj. Selor Hilir, Tj. Selor, Kab. Bulungan, Kalimantan Utara 77215</td>
+            </tr>
+            <tr>
+            <td>RSU dr. R. Sudjono Selong</td>
+            <td>Nusa Tenggara Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6237621118">0376-21118</a></span><br><span style="white-space: nowrap"><a href="tel:+6237621415">0376-21415</a></span><br><span style="white-space: nowrap"><a href="tel:+6237621683">0376-21683</a></span></td>
+
+            <td>0376 21415</td>
+            <td>Jl. Prof. M. Yamin, S.H., No. 55, Selong, Kab. Lombok Timur, Nusa Tenggara Barat 83611</td>
+            </tr>
+            <tr>
+            <td>RSUD Dr. Kanujoso Djatiwibowo</td>
+            <td>Kalimantan Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62542873901">0542-873901</a></span></td>
+
+            <td></td>
+            <td>Jl. M.T. Haryono No. 656, Batu Ampar, Kec. Balikpapan Utara, Kota Balikpapan, Kalimantan Timur 76115</td>
+            </tr>
+            <tr>
+            <td>RSUD Abdul Wahab Sjahranie</td>
+            <td>Kalimantan Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62541738118">0541-738118</a></span><br><span style="white-space: nowrap"><a href="tel:+62541744978">0541-744978</a></span><br><span style="white-space: nowrap"><a href="tel:+62541738080">0541-738080</a></span></td>
+
+            <td>0541 744988</td>
+            <td>Jl. Palang Merah Indonesia No. 1, Sidodadi, Kec. Samarinda Ulu, Samarinda, Kalimantan Timur 75123</td>
+            </tr>
+            <tr>
+            <td>RSUD Panglima Sebaya</td>
+            <td>Kalimantan Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6254324563">0543-24563</a></span><br><span style="white-space: nowrap"><a href="tel:+6254321363">0543-21363</a></span><br><span style="white-space: nowrap"><a href="tel:+6254321118">0543-21118</a></span></td>
+
+            <td></td>
+            <td>Jl. Ciptomangunkusimo No. 2 Tepian Batang, Tanah Grogot, Kabupaten Paser, Kalimantan Timur 76251</td>
+            </tr>
+            <tr>
+            <td>RSUD Taman Husada Bontang</td>
+            <td>Kalimantan Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6254822111">0548-22111</a></span><br><span style="white-space: nowrap"><a href="tel:+6254821256">0548-21256</a></span><br><span style="white-space: nowrap">IGD <a href="tel:+6254823000">0548-23000</a></span><br><span style="white-space: nowrap">Ambulans <a href="tel:+628115553004">0811-5553-004</a></span></td>
+
+            <td>0548 22111</td>
+            <td>Jl. Letjen. S. Parman No.1, Belimbing, Bontang Barat, Kota Bontang, Kalimantan Timur 75331</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Murjani Sampit</td>
+            <td>Kalimantan Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6253121010">0531-21010</a></span></td>
+
+            <td></td>
+            <td>Jl. H. M. Arsyad No. 65, Mentawa Baru Hulu, Mentawa Baru/Ketapan, Kab. Kotawaringin Timur, Kalimantan Tengah 74321</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Doris Sylvanus</td>
+            <td>Kalimantan Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6253621717">0536-21717</a></span><br><span style="white-space: nowrap"><a href="tel:+625363224695">0536-3224695</a></span></td>
+
+            <td>0536 3229194</td>
+            <td>Jl. Tambun Bungai No. 4, Langkai, Kec. Pahandut, Kota Palangka Raya, Kalimantan Tengah 73111</td>
+            </tr>
+            <tr>
+            <td>RSUD Ade Mohammad Djoen Sintang</td>
+            <td>Kalimantan Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62565212002">0565-212002</a></span><br><span style="white-space: nowrap"><a href="tel:+6256522022">0565-22022</a></span><br><span style="white-space: nowrap">WA <a href="https://wa.me/6282144509390">0821-4450-9390</a></span></td>
+
+            <td>0565 23691</td>
+            <td>Jl. Pattimura No.1, Tj. Puri, Kec. Sintang, Kab. Sintang, Kalimantan Barat 78613</td>
+            </tr>
+            <tr>
+            <td>RSUD Idaman Banjarbaru</td>
+            <td>Kalimantan Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+625116749696">0511-6749696</a></span></td>
+
+            <td></td>
+            <td>Jl. Trikora No. 115, Guntungmanggis, Kec. Landasan Ulin, Kota Banjar Baru, Kalimantan Selatan 70721</td>
+            </tr>
+            <tr>
+            <td>RSUD Ulin</td>
+            <td>Kalimantan Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+625113252180">0511-3252180</a></span><br><span style="white-space: nowrap"><a href="tel:+625113252229">0511-3252229</a></span></td>
+
+            <td>05113252229</td>
+            <td>Jl. A. Yani No. 79, Sungai Baru, Kec. Banjarmasin Tengah, Kota Banjarmasin, Kalimantan Selatan 70233</td>
+            </tr>
+            <tr>
+            <td>RSUD Sultan Imanuddin Pangkalan Bun</td>
+            <td>Kalimantan Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6253221404">0532-21404</a></span></td>
+
+            <td></td>
+            <td>Jl. Sutan Syahrir No. 17, Madurejo, Kec. Arut Selatan, Kabupaten Kotawaringin Barat, Kalimantan Tengah 74112</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Abdul Azis</td>
+            <td>Kalimantan Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62562631748">0562-631748</a></span><br><span style="white-space: nowrap"><a href="tel:+62562631798">0562-631798</a></span></td>
+
+            <td></td>
+            <td>Jl. Dr. Soetomo No. 28, Pasiran, Singkawang Barat, Kota Singkawang, Kalimantan Barat 79123</td>
+            </tr>
+            <tr>
+            <td>RSUD Dr. Soetomo</td>
+            <td>Jawa Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62315501239">031-5501239</a></span><br><span style="white-space: nowrap"><a href="tel:+6281357171962">0813-5717-1962</a></span><br><span style="white-space: nowrap"><a href="tel:+62315501078">031-5501078</a></span><br><span style="white-space: nowrap"><a href="tel:+62315501111">031-5501111</a></span><br><span style="white-space: nowrap">IGD <a href="tel:+62315501239">031-5501239</a></span></td>
+
+            <td>031 5022068</td>
+            <td>Jl. Mayjen. Prof. Dr. Moestop No. 6-8, Airlangga, Kec. Gubeng, Kota Surabaya, Jawa Timur 60286</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. R. Koesma Tuban</td>
+            <td>Jawa Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62356321010">0356-321010</a></span></td>
+
+            <td></td>
+            <td>Jl. Dr. Wahidin Sudirohusodo No. 800, Sidorejo, Kec. Tuban, Kab. Tuban, Jawa Timur 62315</td>
+            </tr>
+            <tr>
+            <td>RSUD Blambangan</td>
+            <td>Jawa Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62333421118">0333-421118</a></span></td>
+
+            <td></td>
+            <td>Jl. Letkol. Istiqlah No. 49, Singonegaran, Kec. Banyuwangi, Kab. Banyuwangi, Jawa Timur 68415</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Soedono Madiun</td>
+            <td>Jawa Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62351454657">0351-454657</a></span></td>
+
+            <td></td>
+            <td>Jl. Dr. Soetomo No.59, Kartoharjo, Kec. Kartoharjo, Kota Madiun, Jawa Timur 63117</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Saiful Anwar</td>
+            <td>Jawa Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6282139672121">0821-3967-2121</a></span><br><span style="white-space: nowrap"><a href="tel:+62341362101">0341-362101</a></span></td>
+
+            <td>0341 369384</td>
+            <td>Jl. Jaksa Agung Suprapto No. 2, Klojen, Kec. Klojen, Kota Malang, Jawa Timur 65111</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Soebandi Jember</td>
+            <td>Jawa Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62331487441">0331-487441</a></span><br><span style="white-space: nowrap"><a href="tel:+6282301598557">0823-0159-8557</a></span></td>
+
+            <td>0331 487564</td>
+            <td>Jl. Dr. Soebandi No. 124, Cangkring, Patrang, Kec. Patrang, Kab. Jember, Jawa Timur 68111</td>
+            </tr>
+            <tr>
+            <td>RSUD Kardinah Tegal</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62283350377">0283-350377</a></span></td>
+
+            <td></td>
+            <td>Jl. AIP. K. S. Tubun No. 2, Kejambon, Kec. Tegal Timur, Kota Tegal, Jawa Tengah</td>
+            </tr>
+            <tr>
+            <td>RSUP dr. Soeradji Tirtonegoro</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62272321020">0272-321020</a></span><br><span style="white-space: nowrap"><a href="tel:+62272367381">0272-367381</a></span><br><span style="white-space: nowrap"><a href="tel:+62272326060">0272-326060</a></span></td>
+
+            <td>0272 321104</td>
+            <td>Jl. dr. Soeradji Tirtonegoro No.1, Dusun 1, Tegalyoso, Kec. Klaten Selatan, Kab. Klaten, Jawa Tengah</td>
+            </tr>
+            <tr>
+            <td>RS Paru dr. Ario Wirawan</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62298326130">0298-326130</a></span></td>
+
+            <td>0298 322703</td>
+            <td>Jl. Hasanudin No. 806, Mangunsari, Kec. Sidomukti, Kota Salatiga, Jawa Tengah</td>
+            </tr>
+            <tr>
+            <td>RSUP Dr. Sardjito</td>
+            <td>DI Yogyakarta</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62274631190">0274-631190</a></span><br><span style="white-space: nowrap"><a href="tel:+62274587333">0274-587333</a></span><br><span style="white-space: nowrap"><a href="tel:+62274583613">0274-583613</a></span></td>
+
+            <td>0274 565639</td>
+            <td>Jl. Kesehatan No. 1 Sekip Sinduadi, Kec. Mlati, Kab. Sleman, DI Yogyakarta</td>
+            </tr>
+            <tr>
+            <td>RSUD Panembahan Senopati</td>
+            <td>DI Yogyakarta</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62274367381">0274-367381</a></span><br><span style="white-space: nowrap"><a href="tel:+62274367386">0274--367386</a></span><br><span style="white-space: nowrap"><a href="tel:+622742810721">0274-2810721</a></span><br><span style="white-space: nowrap"><a href="tel:+628112777507">0811-2777-507</a></span></td>
+
+            <td>0274 367506</td>
+            <td>Jl. Dr. Wahidin Sudiro Husodo, Area Sawah, Trirenggo, Kec. Bantul, Bantul, DI Yogyakarta</td>
+            </tr>
+            <tr>
+            <td>RSUD Wates</td>
+            <td>DI Yogyakarta</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62274773169">0274-773169</a></span></td>
+
+            <td></td>
+            <td>Jl. Tentara Pelajar No.5, Area Sawah, Beji, Wates, Kab. Kulon Progo, DI Yogyakarta</td>
+            </tr>
+            <tr>
+            <td>BRSU Tabanan</td>
+            <td>Bali</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62361811027">0361-811027</a></span></td>
+
+            <td>0361 811202</td>
+            <td>Jl. Pahlawan No. 14, Delod Peken, Kec. Tabanan, Kab.n Tabanan, Bali</td>
+            </tr>
+            <tr>
+            <td>RSUD Sanjiwani Gianyar</td>
+            <td>Bali</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62361943524">0361-943524</a></span><br><span style="white-space: nowrap"><a href="tel:+62361943049">0361-943049</a></span><br><span style="white-space: nowrap"><a href="tel:+62361943020">0361-943020</a></span></td>
+
+            <td></td>
+            <td>Jl. Ciung Wanara-Gianyar No. 2, Gianyar, Kec. Gianyar, Kab. Gianyar, Bali</td>
+            </tr>
+            <tr>
+            <td>RSUD Kab. Buleleng</td>
+            <td>Bali</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6236222046">0362-22046</a></span></td>
+
+            <td>0362 29629</td>
+            <td>Jl. Ngurah Rai No. 30 Singaraja, Kab. Buleleng, Bali</td>
+            </tr>
+            <tr>
+            <td>RSAD Tk. II Pelamonia</td>
+            <td>Sulawesi Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6281117823995">0811-1782-3995</a></span><br><span style="white-space: nowrap"><a href="tel:+624117402332">0411-7402332</a></span></td>
+
+            <td>0411 3623434</td>
+            <td>Jl. Jend Sudirman No. 27, Pisang Utara, Kec. Ujung Pandang, Kota Makassar, Sulawesi Selatan 90157</td>
+            </tr>
+            <tr>
+            <td>RSUD Manokwari</td>
+            <td>Papua Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62986215133">0986-215133</a></span><br><span style="white-space: nowrap"><a href="tel:+62986211440">0986-211440</a></span></td>
+
+            <td></td>
+            <td>Jl. Siliwangi No. 1, Manokwari Barat, Kab. Manokwari, Papua Barat 98312</td>
+            </tr>
+            <tr>
+            <td>RSUD Mokopido Tolitoli</td>
+            <td>Sulawesi Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6245321300">0453-21300</a></span><br><span style="white-space: nowrap"><a href="tel:+6245321301">0453-21301</a></span></td>
+
+            <td>0453 21301</td>
+            <td>Jl. Lanoni No. 37, Baru, Baolan, Kab. Tolitoli, Sulawesi Tengah 94514</td>
+            </tr>
+            <tr>
+            <td>RSUD Tarutung</td>
+            <td>Sumatera Utara</td>
+             <td><span style="white-space: nowrap"><a href="tel:+6263321303">0633-21303</a></span></td>
+
+            <td></td>
+            <td>Jl. Bin Harun Said No. 1, Hutagalung Siwaluompu, Tarutung, Kab. Tapanuli Utara, Sumatera Utara 22411</td>
+            </tr>
+            <tr>
+            <td>RSU Kabanjahe</td>
+            <td>Sumatera Utara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6262820012">0628-20012</a></span></td>
+
+            <td></td>
+            <td>Jl. Selamat Ketaren No. 8, Lau Cimba, Kabanjahe, Kab. Karo, Sumatera Utara 22111</td>
+            </tr>
+            <tr>
+            <td>RSUP dr. Rivai Abdullah Palembang</td>
+            <td>Sumatera Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+627117537201">0711-753-7201</a></span></td>
+
+            <td>0711 753 7204</td>
+            <td>Jl. Sungai Kundur, Mariana, Banyuasin I, Kab. Banyu Asin, Sumatera Selatan 30963</td>
+            </tr>
+            <tr>
+            <td>RSUD Siti Aisyah Lubuklinggau</td>
+            <td>Sumatera Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62733452739">0733-452739</a></span><br><span style="white-space: nowrap"><a href="tel:+62733452739">0733-452739</a></span></td>
+
+            <td>0733-452776</td>
+            <td>Jl. Lapter Silampari No. 20, Air Kuti, Lubuk Linggau Timur I, Kota Lubuklinggau, Sumatera Selatan 31625</td>
+            </tr>
+            <tr>
+            <td>RSUP Prof. Dr. R. D. Kandou</td>
+            <td>Sulawesi Utara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+624318383058">0431-8383058</a></span></td>
+
+            <td>0431 838204</td>
+             <td>Jl. Raya Tanawangko No.56, Malalayang Satu Barat, Kec. Malalayang, Kota Manado, Sulawesi Utara</td>
+            </tr>
+            <tr>
+            <td>RSUD Dr. Achmad Mochtar</td>
+            <td>Sumatera Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6275221720">0752-21720</a></span><br><span style="white-space: nowrap"><a href="tel:+6275221492">0752-21492</a></span><br><span style="white-space: nowrap"><a href="tel:+6275221831">0752-21831</a></span></td>
+
+            <td>0752 21322</td>
+            <td>Jl. Dr. Abdul Rivai No.1, Bukit Apit Puhun, Kec. Guguk Panjang, Kota Bukittinggi, Sumatera Barat 26122</td>
+            </tr>
+            <tr>
+            <td>RSUD Padang Sidempuan</td>
+            <td>Sumatera Utara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6263421780">0634-21780</a></span></td>
+
+            <td>0634 21251</td>
+            <td>Jl. Dr. F. L. Tobing, Kantin, Padangsidimpuan Utara, Kota Padang Sidempuan, Sumatera Utara 22719</td>
+            </tr>
+            <tr>
+            <td>RSUD Sorong</td>
+            <td>Papua Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62951321850">0951-321850</a></span></td>
+
+            <td></td>
+            <td>Jl. Kesehatan No. 36, Kp. Baru, Kec. Sorong, Kota Sorong, Papua Barat 98411</td>
+            </tr>
+            <tr>
+            <td>RSUD Bahteramas</td>
+            <td>Sulawesi Tenggara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6282292536768">0822-9253-6768</a></span><br><span style="white-space: nowrap"><a href="tel:+624013195611">0401-319-5611</a></span><br><span style="white-space: nowrap"><a href="tel:+6285287187121">0852-87187121</a></span></td>
+
+            <td></td>
+            <td>Jl. Kapten Piere Tendean, Watubangga, Baruga, Kota Kendari, Sulawesi Tenggara 93116</td>
+            </tr>
+            <tr>
+            <td>RSUD Andi Makkasau</td>
+            <td>Sulawesi Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6285299787999">0852-9978-7999</a></span><br><span style="white-space: nowrap"><a href="tel:+6240127643">0401-27643</a></span></td>
+
+            <td></td>
+            <td>Jl. Nurussamawati No.9, Bumi Harapan, Kec. Bacukiki Barat, Kota Pare-Pare, Sulawesi Selatan 91122</td>
+            </tr>
+            <tr>
+            <td>RSUD Lakipadada</td>
+            <td>Sulawesi Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6243222264">0432-22264</a></span></td>
+
+            <td></td>
+            <td>Jl. Pongtiku, Tambunan, Makale Utara, Kab. Tana Toraja, Sulawesi Selatan 91812</td>
+            </tr>
+            <tr>
+            <td>RS Islam Faisal</td>
+            <td>Sulawesi Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62411871942">0411-871942</a></span></td>
+
+            <td></td>
+            <td>Jl. A. P. Pettarani, Banta-Bantaeng, Kec. Rappocini, Kota Makassar, Sulawesi Selatan 90222</td>
+            </tr>
+            <tr>
+            <td>RS Akademis Jaury Jusuf Putra</td>
+            <td>Sulawesi Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62411317343">0411-317343</a></span></td>
+
+            <td></td>
+            <td>Jl. Jend. M. Jusuf No. 57A, Pattunuang, Kec. Wajo, Kota Makassar, Sulawesi Selatan 90156</td>
+            </tr>
+            <tr>
+            <td>RSUD Sinjai</td>
+            <td>Sulawesi Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6248221132">0482-21132</a></span></td>
+
+            <td></td>
+            <td>Jl. Jend. Sudirman No. 47, Biringere, Sinjai Utara, Kab. Sinjai, Sulawesi Selatan 92615</td>
+            </tr>
+            <tr>
+            <td>RS Universitas Hasanuddin</td>
+            <td>Sulawesi Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62411591331">0411-591331</a></span><br><span style="white-space: nowrap">cust.care <a href="tel:+62411591331p333">0411-591331 ext 333</a></span></td>
+
+            <td></td>
+            <td>Jl. Perintis Kemerdekaan KM.10, Tamalanrea Indah, Kec. Tamalanrea, Kota Makassar, Sulawesi Selatan 90245</td>
+            </tr>
+            <tr>
+            <td>RSUD Labuang Baji</td>
+            <td>Sulawesi Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62411872120">0411-872120</a></span><br><span style="white-space: nowrap"><a href="tel:+62411873482">0411-873482</a></span></td>
+
+            <td></td>
+            <td>Jl. Dr. Sam Ratulangi No. 81, Labuang Baji, Kec. Mamajang, Kota Makassar, Sulawesi Selatan 90132</td>
+            </tr>
+            <tr>
+            <td>RSUD Anutapura Palu</td>
+            <td>Sulawesi Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62451460570">0451-460570</a></span></td>
+
+            <td></td>
+            <td>Jl. Kangkung No. 1, Donggala Kodi, Palu, Kota Palu, Sulawesi Tengah 94111</td>
+            </tr>
+            <tr>
+            <td>RS dr. Tadjuddin Chalid Makassar</td>
+            <td>Sulawesi Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62411512902">0411-512902</a></span></td>
+
+            <td></td>
+            <td>Jl. Paccerakkang No.67, Paccerakkang, Kec. Biringkanaya, Kota Makassar, Sulawesi Selatan 90242</td>
+            </tr>
+            <tr>
+            <td>RSUP Dr. Wahidin Sudirohusodo Makassar</td>
+            <td>Sulawesi Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62411592222">0411-592222</a></span><br><span style="white-space: nowrap"><a href="tel:+62411581773">0411-581773</a></span><br><span style="white-space: nowrap"><a href="tel:+62411583333p8229">0411-583333 ext 8229</a></span></td>
+
+            <td>0411 587676</td>
+            <td>Jl.Perintis Kemerdekaan Km.11, Tamalanrea Jaya, Kec. Tamalanrea, Kota Makassar, Sulawesi Selatan 90245</td>
+            </tr>
+            <tr>
+            <td>RSUD Kabupaten Nabire</td>
+            <td>Papua</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6298421845">0984-21845</a></span></td>
+
+            <td></td>
+            <td>Jl. R. E. Martadinata, Siriwini, Kec. Nabire, Kab. Nabire, Papua 98816</td>
+            </tr>
+            <tr>
+            <td>RSUD Jayapura</td>
+            <td>Papua</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62967533616">0967-533616</a></span><br><span style="white-space: nowrap"><a href="tel:+62967533781">0967-533781</a></span></td>
+
+            <td>0967 533781</td>
+            <td>Jl. Kesehatan No.1, Dok II, Bayangkara, Jayapura Utara, Kota Jayapura, Papua 99112</td>
+            </tr>
+            <tr>
+            <td>RSUD Komodo</td>
+            <td>Nusa Tenggara Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6281237312165">0812-373-12165</a></span><br><span style="white-space: nowrap"><a href="tel:+6281337055250">0813-3705-5250</a></span><br><span style="white-space: nowrap"><a href="tel:+623852443240">0385-2443240</a></span></td>
+
+            <td></td>
+            <td>Desa Golo Bilas, Kec. Komodo, Kab. Manggarai Barat, Nusa Tenggara Timur</td>
+            </tr>
+            <tr>
+            <td>RSUD Praya</td>
+            <td>Nusa Tenggara Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+623706635050">0370-6635050</a></span><br><span style="white-space: nowrap"><a href="tel:+62370654007">0370-654007</a></span><br><span style="white-space: nowrap"><a href="tel:+62370653007">0370-653007</a></span></td>
+
+            <td>0370 653082</td>
+            <td>Jl. Basuki Rahmat No. 11, Bunut Baok, Praya, Kab. Lombok Tengah, Nusa Tenggara Barat 83511</td>
+            </tr>
+            <tr>
+            <td>RSUD Bima</td>
+            <td>Nusa Tenggara Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6237443142">0374-43142</a></span></td>
+
+            <td></td>
+            <td>Jl. Langsat No. 1, Rabangodu Selatan, Raba, Bima, Nusa Tenggara Barat 84115</td>
+            </tr>
+            <tr>
+            <td>RSUD Sofifi</td>
+            <td>Maluku Utara</td>
+            <td></td>
+
+            <td></td>
+            <td>Exo Guraping Kec. Oba Utara, Kota Tidore Kepulauan, Maluku Utara</td>
+            </tr>
+            <tr>
+            <td>RSUD Tarakan</td>
+            <td>Kalimantan Utara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6255121166">0551-21166</a></span><br><span style="white-space: nowrap">Tim Satgas Pengaduan <a href="tel:+628125409118">0812-5409-118</a></span><br><span style="white-space: nowrap">IGD/Ambulan <a href="tel:+6255121118">0551-21118</a></span></td>
+
+            <td>0551 21720</td>
+            <td>Jl. Pulau Irian No.1, Kp. Satu Skip, Tarakan Tengah, Kota Tarakan, Kalimantan Utara</td>
+            </tr>
+            <tr>
+            <td>RSUD Merauke</td>
+            <td>Papua</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62971321124">0971-321124</a></span><br><span style="white-space: nowrap"><a href="tel:+62971321125">0971-321125</a></span></td>
+
+            <td></td>
+            <td>Jl. Soekarjo Wiryopranoto No. 1, Maro, Kec. Merauke, Kab. Merauke, Papua 99613</td>
+            </tr>
+            <tr>
+            <td>RSU dr. M. Haulussy Ambon</td>
+            <td>Maluku</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62911343002">0911-343002</a></span><br><span style="white-space: nowrap"><a href="tel:+62911344871">0911-344871</a></span></td>
+
+            <td>0911 353595</td>
+            <td>Jl. Dr. Kayadoe, Benteng, Nusaniwe, , Kota Ambon, Maluku 97116</td>
+            </tr>
+            <tr>
+            <td>RSUP dr. J. Leimena</td>
+            <td>Maluku</td>
+            <td></td>
+
+            <td></td>
+            <td>Jl. R. Suprapto No. 123, Rumah Tiga, Tlk. Ambon, Kota Ambon, Maluku 97116</td>
+            </tr>
+            <tr>
+            <td>RSD Mayjend. H. M. Ryacudu Kotabumi</td>
+            <td>Lampung</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6272422095">0724-22095</a></span><br><span style="white-space: nowrap"><a href="tel:+6272421035">0724-21035</a></span><br></td>
+
+            <td></td>
+            <td>Jl. Jend. Sudirman No. 2, Kota Gapura, Kotabumi, Kab.n Lampung Utara, Lampung 34511</td>
+            </tr>
+            <tr>
+            <td>RSBP Batam</td>
+            <td>Kepulauan Riau</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62778322121">0778-322121</a></span><br><span style="white-space: nowrap"><a href="tel:+62778322046">0778-322046</a></span></td>
+
+            <td></td>
+            <td>Jl. Dr. Ciptomangunkusumo No.1, Tj. Pinggir, Kec. Sekupang, Kota Batam, Kepulauan Riau</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. H. Bob Bazar, S.K.M., Kalianda</td>
+            <td>Lampung</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62727322160">0727-322160</a></span><br><span style="white-space: nowrap"><a href="tel:+62727322159">0727-322159</a></span></td>
+
+            <td></td>
+            <td>Jl. Lettu Rohani No. 14B, Kedaton, Kec. Kalianda, Kab. Lampung Selatan, Lampung 35551</td>
+            </tr>
+            <tr>
+            <td>RSUD Muhammad Sani Karimun</td>
+            <td>Kepulauan Riau</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62777327808">0777-327808</a></span><br><span style="white-space: nowrap"><a href="tel:+62778327808">0778-327808</a></span></td>
+
+            <td></td>
+            <td>Jl. Soekarno Hatta No. 1 Tanjung Balai Karimun, Kepulauan Riau 29663</td>
+            </tr>
+            <tr>
+            <td>RSUD Aji Muhammad Parikesit</td>
+            <td>Kalimantan Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62541661013">0541-661013</a></span><br><span style="white-space: nowrap"><a href="tel:+62541661015">0541-661015</a></span></td>
+
+            <td>0541 661013</td>
+            <td>Jl. Ratu Agung No. 1, Tlk. Dalam, Kec. Tenggarong Seberang, Kab. Kutai Kartanegara, Kalimantan Timur 75572</td>
+            </tr>
+            <tr>
+            <td>RSUD H. Boejasin Pelaihari</td>
+            <td>Kalimantan Selatan</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6251221082">0512-21082</a></span><br><span style="white-space: nowrap"><a href="tel:+6251221083">0512-21083</a></span></td>
+
+            <td>0512 21082</td>
+            <td>Jl. H. Boejasin No. 68A, Angsau, Kec. Pelaihari, Kab. Tanah Laut, Kalimantan Selatan 70814</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Agoesdjam Ketapang</td>
+            <td>Kalimantan Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+625343037239">0534-3037239</a></span></td>
+
+            <td>0534 3037239</td>
+            <td>Jl. Mayjen. D.I. Panjaitan No. 51, Sampit, Delta Pawan, Kabupaten Ketapang, Kalimantan Barat 78811</td>
+            </tr>
+            <tr>
+            <td>RSU dr. Sudarso Pontianak</td>
+            <td>Kalimantan Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62561737701">0561-737701</a></span><br><span style="white-space: nowrap"><a href="tel:+62561732077">0561-732077</a></span><br><span style="white-space: nowrap">SMS <a href="sms:+6282151663377">0821-5166-3377</a></span></td>
+
+            <td>0561 732077</td>
+            <td>Jl. Dr. Soedarso No. 1, Bangka Belitung Laut, Kec. Pontianak Tenggara, Kota Pontianak, Kalimantan Barat 78111</td>
+            </tr>
+            <tr>
+            <td>RSUD Dr. R. Sosodoro Djatikoesoemo</td>
+            <td>Jawa Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+628113224972">0811-3224-972</a></span><br><span style="white-space: nowrap"><a href="tel:+623533412133">0353-3412133</a></span><br><span style="white-space: nowrap"><a href="tel:+6235334121">0353-34121</a></span></td>
+
+            <td>0353 3412133</td>
+            <td>Jl. Veteran No. 36, Kec. Bojonegoro, Kab. Bojonegoro, Jawa Timur 62111.</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Iskak Tulungagung</td>
+            <td>Jawa Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62355322609">0355-322609</a></span></td>
+
+            <td></td>
+            <td>Jl. Dr. Wahidin Sudiro Husodo, Kedung Taman, Kedungwaru, Kec. Kedungwaru, Kab. Tulungagung, Jawa Timur 66223</td>
+            </tr>
+            <tr>
+            <td>RSUD Pare Kediri</td>
+            <td>Jawa Timur</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62354391718">0354-391718</a></span><br><span style="white-space: nowrap"><a href="tel:+62354391169">0354-391169</a></span></td>
+
+            <td>0354 391833</td>
+            <td>Jl. Pahlawan Kusuma Bangsa No. 1, Cangkring, Pelem, Pare, Kediri, Jawa Timur 64213</td>
+            </tr>
+            <tr>
+            <td>RSUD Tidar</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62293363636">0293-363636</a></span><br><span style="white-space: nowrap"><a href="tel:+62293362260">0293-362260</a></span></td>
+
+            <td>0293 368354</td>
+            <td>Jl. Tidar No. 30A, Kemirirejo, Kec. Magelang Tengah, Kota Magelang, Jawa Tengah 56125</td>
+            </tr>
+            <tr>
+            <td>RSU Prof. Dr. Margono Soekarjo</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62281632708">0281-632708</a></span></td>
+
+            <td>0281 631015</td>
+            <td>Jl. Dr. Gumbreg No. 1, Kebontebu, Berkoh, Kec. Purwokerto Selatan, Kab. Banyumas, Jawa Tengah</td>
+            </tr>
+            <tr>
+            <td>RSUD Tugurejo</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62247605378">024-7605378</a></span><br><span style="white-space: nowrap"><a href="tel:+62247605297">024-7605297</a></span></td>
+
+            <td>024 7604398</td>
+            <td>Jl. Walisongo No. 137 KM. 8.5, Tambakaji, Kec. Ngaliyan, Kota Semarang, Jawa Tengah</td>
+            </tr>
+            <tr>
+            <td>RSUD dr. Soeselo</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62283491016">0283-491016</a></span><br><span style="white-space: nowrap"><a href="tel:+62283491761">0283-491761</a></span><br><span style="white-space: nowrap"><a href="tel:+62283491430">0283-491430</a></span></td>
+
+            <td>0283 491016</td>
+            <td>Jl. Dr. Sutomo No. 63, Slawi Kulon, Kec. Slawi, Tegal, Jawa Tengah</td>
+            </tr>
+            <tr>
+            <td>RSAL Dr. Mintoharjo</td>
+            <td>DKI Jakarta</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62215703081">021-5703081</a></span><br><span style="white-space: nowrap"><a href="tel:+625703085">5703085</a></span><br><span style="white-space: nowrap"><a href="tel:+62215732036">021-5732036</a></span></td>
+
+            <td>021 5711997</td>
+            <td>Jl. Bendungan Hilir No. 17, Bend. Hilir, Kec. Tanah Abang, Kota Jakarta Pusat, DKI Jakarta</td>
+            </tr>
+            <tr>
+            <td>RSUD Prof. Dr. H. Aloei Saboe Kota Gorontalo</td>
+            <td>Gorontalo</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62435821924">0435-821924</a></span><br><span style="white-space: nowrap"><a href="tel:+628124315555">0812-431-5555</a></span><br><span style="white-space: nowrap">IGD <a href="tel:+6285298208997">0852-9820-8997</a></span><br></td>
+
+            <td>0435 822150</td>
+            <td>Jl. Prof. Dr. Aloe Saboe No. 92, Wongkaditi, Kec. Kota Utara, Kota Gorontalo, Gorontalo</td>
+            </tr>
+            <tr>
+            <td>RS Paru Dr. M. Goenawan Partowidigdo</td>
+            <td>Jawa Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+622518253629">0251-8253629</a></span><br><span style="white-space: nowrap"><a href="tel:+622518253630">0251-8253630</a></span></td>
+
+            <td>0251 8257663</td>
+            <td>Jl. Raya Puncak KM. 83, Po Box 28 Kec. Cisarua, Kota Bogor, Jawa Barat</td>
+            </tr>
+            <tr>
+            <td>RSUD R. Syamsudin, S.H.</td>
+            <td>Jawa Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62266225180">0266-225180</a></span></td>
+
+            <td>0266 212988</td>
+            <td>Jl. Rumah Sakit No. 1, Cikole, Kec. Cikole, Kota Sukabumi, Jawa Barat</td>
+            </tr>
+            <tr>
+            <td>RSUP Dr. Hasan Sadikin Bandung</td>
+            <td>Jawa Barat</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62222551111">022-2551111</a></span><br><span style="white-space: nowrap"><a href="tel:+62222034953">022-2034953</a></span><br><span style="white-space: nowrap"><a href="tel:+62222034955">022-2034955</a></span></td>
+
+            <td></td>
+            <td>Jl. Pasteur No. 38, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat</td>
+            </tr>
+            <tr>
+            <td>RS Bhayangkara Tk. I R. Said Sukanto</td>
+            <td>DKI Jakarta</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62218093288">021-8093288</a></span><br><span style="white-space: nowrap"><a href="tel:+62218090559">021-8090559</a></span></td>
+
+            <td>021 8094005</td>
+            <td>Jl. Raya Bogor, Kramat Jati, Kec. Kramat Jati, Kota Jakarta Timur, DKI Jakarta</td>
+            </tr>
+            <tr>
+            <td>RSUD Wonosari</td>
+            <td>DI Yogyakarta</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62274391007">0274-391007</a></span><br><span style="white-space: nowrap"><a href="tel:+62274391288">0274-391288</a></span></td>
+
+            <td>0274 393437</td>
+            <td>Jl. Taman Bakti No. 6, Purbosari, Wonosari, Kec. Wonosari, Kab. Gunung Kidul, DI Yogyakarta</td>
+            </tr>
+            <tr>
+            <td>RSUD Hasanuddin Damrah Manna</td>
+            <td>Bengkulu</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6273921118">0739-21118</a></span><br><span style="white-space: nowrap"><a href="tel:+6273921012">0739-21012</a></span><br><span style="white-space: nowrap"><a href="tel:+6285381637684">0853-8163-7684</a></span></td>
+
+            <td>0739 22870</td>
+            <td>Jl. Raya Padang Panjang, Pagar Dewa, Kota Manna, Kab. Bengkulu Selatan, Bengkulu</td>
+            </tr>
+            <tr>
+            <td>RSUD Kabupaten Belitung Timur</td>
+            <td>Bangka Belitung</td>
+            <td><span style="white-space: nowrap"><a href="tel:+6271991738">0719-91738</a></span></td>
+
+            <td></td>
+            <td>Jl. Raya Manggar-Gantung, Padang, Manggar, Kab. Belitung Timur, Bangka Belitung</td>
+            </tr>
+            <tr>
+            <td>RSUP Sanglah</td>
+            <td>Bali</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62361227912">0361-227912</a></span><br><span style="white-space: nowrap"><a href="tel:+62361227915">0361-227915</a></span></td>
+
+            <td></td>
+            <td>Jl. Diponegoro, Dauh Puri Klod, Kec. Denpasar Barat, Kota Denpasar, Bali</td>
+            </tr>
+            <tr>
+            <td>RSUD Dr. H. Chasan Boesoeri Ternate</td>
+            <td>Maluku Utara</td>
+            <td><span style="white-space: nowrap"><a href="tel:+629213121281">0921-3121281</a></span><br><span style="white-space: nowrap"><a href="tel:+629213127159">0921-3127159</a></span><br><span style="white-space: nowrap">IGD <a href="tel:+6282195393484">0821-9539-3484</a></span><br><span style="white-space: nowrap">SMS <a href="sms:+6282190047400">0821-90047400</a></span></td>
+
+            <td></td>
+            <td>Jl. Cempaka, Tanah Tinggi, Kec. Ternate Selatan, Kota Ternate, Maluku Utara 97715</td>
+            </tr>
+            <tr>
+            <td>RSUD Kraton Pekalongan</td>
+            <td>Jawa Tengah</td>
+            <td><span style="white-space: nowrap"><a href="tel:+62285421621">0285-421621</a></span><br><span style="white-space: nowrap"><a href="tel:+62285423523">0285-423523</a></span><br><span style="white-space: nowrap">SMS <a href="sms:+628156941008">0815-6941-008</a></span></td>
+
+            <td></td>
+            <td>Jl. Veteran No.31, Dukuh, Pekalongan Utara, Kota Pekalongan, Jawa Tengah</td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="py-3 bg-white border-top">
+        <div class="container">
+            <div class="text-center">Situs ini dibuat oleh <a href="https://blog.dasakreativa.web.id">Amir Zuhdi Wibowo</a>.</div>
+        </div>
+    </footer>
+
+    <script src="./js/app.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        "use strict";
+        $.getJSON("./get.php").done(function(response) {
+            console.log(response[0]);
+        
+            $("#all-cases").html(response[0].positif + " Kasus");
+            $("#sembuh").html(response[0].sembuh + " Orang");
+            $("#dirawat").html(response[0].dirawat + " Orang");
+            $("#death").html(response[0].meninggal + " Orang");
+        });
+        
+        // Select all links with hashes
+        $('a[href*="#"]')
+            .not('[href="#"]')
+            .not('[href="#0"]')
+            .click(function(event) {
+                // On-page links
+                if (
+                    location.pathname.replace(/^\//, "") == this.pathname.replace(/^\//, "") &&
+                    location.hostname == this.hostname
+                ) {
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $("html, body").animate({
+                            scrollTop: target.offset().top
+                        }, 1000, function() {
+                            // Callback after animation
+                            // Must change focus!
+                            var $target = $(target);
+                            $target.focus();
+                            if ($target.is(":focus")) { // Checking if the target was focused
+                                return false;
+                            } else {
+                                $target.attr("tabindex", "-1"); // Adding tabindex for elements not focusable
+                                $target.focus(); // Set focus again
+                            };
+                        });
+                    }
+                }
+            });
+        $(document).ready(function() {
+            $('#rs-rujukan').DataTable();
+        });
+            
+    </script>
+</body>
+</html>

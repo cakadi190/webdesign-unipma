@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kawal COVID-19</title>
+    <link rel="stylesheet" href="./css/app.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" />
+    <style>
+        body {
+        background: rgb(235, 235, 235);
+        font-size: 1rem;
+        }
+        #masthead {
+        background: linear-gradient(135deg, var(--primary), var(--dark));
+        position: relative;
+        }
+        #masthead #top-navbar {
+        border-bottom: 1px solid rgba(255,255,255,.25);
+        }
+        #masthead #top-navbar ul li a.nav-link {
+        color: rgba(255,255,255,.75);
+        }
+        #masthead #top-navbar ul li a.nav-link.disabled,
+        #masthead #top-navbar ul li a.nav-link:disabled {
+        opacity: .5;
+        cursor: not-allowed!important;
+        }
+        #masthead .row {
+        min-height: calc(65vh - 110px);
+        }
+        #masthead .title {
+        font-size: 4rem;
+        color: white;
+        }
+        #masthead .desc {
+        font-size: 1.5rem;
+        color: white;
+        }
+        @media screen and (max-width: 768px) {
+        #masthead .title {
+        font-size: 3rem;
+        }
+        #masthead .desc {
+        font-size: 1.25rem;
+        }
+        }
+        #masthead .btn-cta {
+        display: inline-flex;
+        padding: 0.75rem 1rem .75rem 2rem;
+        font-size: 1rem;
+        border-radius: 50px;
+        color: white;
+        border: 3px solid #fff;
+        align-items: center;
+        }
+        #masthead .btn-cta:hover {
+        background: #fff;
+        color: var(--primary);
+        }
+        #masthead .btn-cta:focus {
+        box-shadow: 0 0 0 0.2rem rgb(255,255,255,.25);
+        }
+        #masthead .btn-cta .icon {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 1.5rem;
+        background: white;
+        color: var(--primary);
+        border-radius: 50px;
+        }
+        #masthead .btn-cta:hover .icon {
+        background: var(--primary);
+        color: #fff;
+        }
+        #masthead .custom-shape-divider-bottom svg {
+        transform: rotate(180deg);
+        fill: #fff;
+        position: absolute;
+        bottom: 0;
+        height: 70px;
+        width: 100%;
+        }
+        section .heading {
+        font-size: 2.5rem;
+        }
+        section .desc {
+        font-size: 1.2rem;
+        }
+        #preventive-act .custom-shape-divider-top svg {
+        fill: #fff;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <header id="masthead">
+        <!-- Top Navbar -->
+        <nav class="navbar navbar-expand navbar-dark" id="top-navbar">
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="//wa.me/6285159190229"><i class="fas fa-phone fa-fw mr-2"></i><span class="d-none d-md-inline d-sm-none">085159190229</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mailto:admin@dasakreativa.web.id"><i class="fas fa-envelope fa-fw mr-2"></i><span class="d-none d-md-inline d-sm-none">admin@dasakreativa.web.id</span></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="./kawal.html" class="btn btn-success">All Cases</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Bottom Nav -->
+        <nav class="navbar navbar-expand-lg navbar-dark" id="bottom-nav">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html"><img src="./img/brands/logo-white-alt.svg" height="30px" width="auto" alt="Logo Dasa Kreativa" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html#cases">Kasus</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html#preventive-act">Langkah Pencegahan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html#rumah-sakit">Daftar RS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7 py-5 py-md-0 my-5 my-md-0">
+                    <h3 class="title">Pantau</h3>
+                    <p class="desc">Kawal dan Pantau COVID-19 di Indonesia</p>
+                </div>
+            </div>
+        </div>
+        <!-- Separator -->
+        <div class="custom-shape-divider-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </header>
+
+    <section class="bg-white py-5" id="cases">
+        <div class="container py-5">
+            <h3 class="text-center heading">Kasus Covid-19</h3>
+            <p class="text-muted text-center desc">Yang ada di Indonesia</p>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="alert alert-alt-danger" role="alert">
+                        <div class="alert-wrap">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <div class="content">
+                                <h3 class="title">Kasus</h3>
+                                <div id="all-cases">Kasus</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="alert alert-alt-success" role="alert">
+                        <div class="alert-wrap">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="content">
+                                <h3 class="title">Sembuh</h3>
+                                <div id="sembuh">Orang</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="alert alert-alt-warning" role="alert">
+                        <div class="alert-wrap">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-briefcase-medical"></i>
+                            </div>
+                            <div class="content">
+                                <h3 class="title">Dirawat</h3>
+                                <div id="dirawat">Orang</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="alert alert-alt-danger" role="alert">
+                        <div class="alert-wrap">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-book-dead"></i>
+                            </div>
+                            <div class="content">
+                                <h3 class="title">Meninggal</h3>
+                                <div id="death">Orang</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center">API <a class="text-muted font-weight-bold" href="https://www.kawalcorona.com">Kawal Corona</a> by <a class="text-muted font-weight-bold" href="https://hack.co.id">Ethical Hacker Indonesia</a>.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h3 class="title text-center">Data Kasus</h3>
+            <p class="desc text-muted text-center">Data Kasus Per Provinsi</p>
+
+            <div class="table-responsive">
+                <table class="table" id="all-cases">
+                    <thead>
+                        <tr>
+                            <th>Provinsi</th>
+                            <th>Sembuh</th>
+                            <th>Meninggal</th>
+                            <th>Dirawat</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>  
+    </section>
+
+    <footer class="py-3 bg-white border-top">
+        <div class="container">
+            <div class="text-center">Situs ini dibuat oleh <a href="https://blog.dasakreativa.web.id">Amir Zuhdi Wibowo</a>.</div>
+        </div>
+    </footer>
+
+    <script src="./js/app.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        "use strict";
+        $.getJSON("./get.php").done(function(response) {
+            // console.log(response[0]);
+        
+            $("#all-cases").html(response[0].positif + " Kasus");
+            $("#sembuh").html(response[0].sembuh + " Orang");
+            $("#dirawat").html(response[0].dirawat + " Orang");
+            $("#death").html(response[0].meninggal + " Orang");
+        });
+
+        $.getJSON("./get.php?type=provinsi").done(function(response) {
+            // console.log(response[0]);
+
+            var html = '<tr>';
+            $.each(response, function(key, value) {
+                // console.log(value.attributes);
+                var atrib = value.attributes;
+
+                // var n = 350000;
+                // console.log(n.toLocaleString());
+                html += `<td>${atrib.Provinsi}</td><td>${atrib.Kasus_Posi.toLocaleString()}</td><td>${atrib.Kasus_Semb.toLocaleString()}</td><td>${atrib.Kasus_Meni.toLocaleString()}</td>`;
+                html += '</tr>'
+            });
+
+            $('#all-cases tbody').html(html);
+            $('#all-cases').dataTables();
+        });
+        
+        // Select all links with hashes
+        $('a[href*="#"]')
+            .not('[href="#"]')
+            .not('[href="#0"]')
+            .click(function(event) {
+                // On-page links
+                if (
+                    location.pathname.replace(/^\//, "") == this.pathname.replace(/^\//, "") &&
+                    location.hostname == this.hostname
+                ) {
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $("html, body").animate({
+                            scrollTop: target.offset().top
+                        }, 1000, function() {
+                            // Callback after animation
+                            // Must change focus!
+                            var $target = $(target);
+                            $target.focus();
+                            if ($target.is(":focus")) { // Checking if the target was focused
+                                return false;
+                            } else {
+                                $target.attr("tabindex", "-1"); // Adding tabindex for elements not focusable
+                                $target.focus(); // Set focus again
+                            };
+                        });
+                    }
+                }
+            });
+        $(document).ready(function() {
+            $('#rs-rujukan').DataTable();
+        });
+            
+    </script>
+</body>
+</html>
